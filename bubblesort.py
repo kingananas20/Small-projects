@@ -1,7 +1,9 @@
 import random, time
+from colorama import Fore, init
+init(autoreset=True)
 
-print("Making list")
-daten = [random.randint(1000, 10000) for _ in range(100000)]
+print(f"{Fore.WHITE}Making list")
+daten = [random.randint(1000, 10000) for _ in range(10000)]
 
 def bubblesort(lst: list) -> list:
     lst = lst.copy()
@@ -21,12 +23,12 @@ def bubblesort(lst: list) -> list:
 
     return lst
 
-print("Starting bubble sort")
+print(f"{Fore.WHITE}Starting bubble sort")
 startTime = time.time()
 sorted = bubblesort(daten)
 duration = time.time() - startTime
 
 for i in range(len(daten)):
-    print(f"{daten[i]} : {sorted[i]}")
+    print(f"{Fore.RED}{daten[i]} {Fore.WHITE}: {Fore.GREEN}{sorted[i]}") if daten[i] != sorted[i] else print(f"{Fore.GREEN}{daten[i]} {Fore.WHITE}: {Fore.GREEN}{sorted[i]}")
 
-print(f"Duration: {round(duration / 60)}m {duration % 60}s") if duration > 60 else print(f"Duration: {duration}")
+print(f"{Fore.WHITE}Duration: {round(duration / 60)}m {duration % 60}s") if duration > 60 else print(f"{Fore.WHITE}Duration: {duration}s")
